@@ -1,22 +1,24 @@
 package com.wgh.mvpframework
 
+import com.wgh.mvpframework.base.BasePresenter
+
 /**
  * @author: wgh
  * @date: 2018/4/2
  * @version V0.1.0
  * @description
  */
-class LoginPresenter(var loginView: ILoginView) : ILoginPresenter {
+class LoginPresenter : BasePresenter<ILoginView>(), ILoginPresenter {
 
-    internal var loginModel: ILoginModel = LoginModel(this)
+    private var loginModel: ILoginModel = LoginModel(this)
 
     override fun login2Server(userName: String, password: String) {
-        loginView.showProgress(true)
+        mvpView!!.showProgress(true)
         loginModel.login(userName, password)
     }
 
     override fun loginSuccess() {
-        loginView.showProgress(false)
-        loginView.showLoginView()
+        mvpView!!.showProgress(false)
+        mvpView!!.showLoginView()
     }
 }

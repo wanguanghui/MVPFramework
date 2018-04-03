@@ -1,27 +1,30 @@
 package com.wgh.mvpframework
-
-import android.content.Context
-import android.support.v7.app.AppCompatActivity
-
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import com.wgh.mvpframework.base.BaseMvpActivity
 import kotlinx.android.synthetic.main.activity_login.*
 
 
-class LoginActivity : AppCompatActivity(), ILoginView {
+class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
+    override fun showRequestError(errno: String, msg: String) {
+    }
 
-    var mContext: Context = this
-    var loginPresenter = LoginPresenter(this)
+    override fun createPresenter(): LoginPresenter {
+        return LoginPresenter()
+    }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+    override fun getContentViewId(): Int {
+        return R.layout.activity_login
+    }
 
+    override fun registerListener() {
         email_sign_in_button.setOnClickListener{
-            loginPresenter.login2Server("", "")
+            (mvpPresenter as LoginPresenter).login2Server("", "")
         }
+    }
 
+    override fun initData() {
+        mvpPresenter!!.attachView(this)
     }
 
     override fun showProgress(enable: Boolean) {
@@ -33,7 +36,8 @@ class LoginActivity : AppCompatActivity(), ILoginView {
     }
 
     override fun showLoginView() {
-        Toast.makeText(mContext, "登陆成功", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show()
     }
+
 }
 

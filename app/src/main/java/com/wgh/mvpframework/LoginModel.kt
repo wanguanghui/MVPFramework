@@ -2,6 +2,7 @@ package com.wgh.mvpframework
 
 import android.os.Handler
 import android.util.Log
+import com.wgh.mvpframework.network.OkHttpUtils
 
 
 /**
@@ -19,6 +20,8 @@ class LoginModel(var presenter: ILoginPresenter) : ILoginModel {
             Log.d("LoginModel", "run:")
             presenter.loginSuccess()
         }, 2000)
+
     }
+
 
 }
