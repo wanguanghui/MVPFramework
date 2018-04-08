@@ -6,6 +6,12 @@ import kotlinx.android.synthetic.main.activity_login.*
 
 
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
+
+
+    override fun acctchView() {
+        mvpPresenter!!.attachView(this)
+    }
+
     override fun showRequestError(errno: String, msg: String) {
     }
 
@@ -19,12 +25,12 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
 
     override fun registerListener() {
         email_sign_in_button.setOnClickListener{
-            (mvpPresenter as LoginPresenter).login2Server("", "")
+//            (mvpPresenter as LoginPresenter).login2Server("", "")
+            (mvpPresenter as LoginPresenter).test("25")
         }
     }
 
     override fun initData() {
-        mvpPresenter!!.attachView(this)
     }
 
     override fun showProgress(enable: Boolean) {

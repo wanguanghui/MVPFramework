@@ -8,6 +8,6 @@ package com.wgh.mvpframework.network
  */
 object Urls {
 
-    val baseUrl = "http://httpbin.org/"
+    val baseUrl = " http://api.douban.com/"
 
 }

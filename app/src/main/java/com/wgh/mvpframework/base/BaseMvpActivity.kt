@@ -14,8 +14,11 @@ abstract class BaseMvpActivity<P : BasePresenter<*>> : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mvpPresenter = createPresenter()
+        acctchView()
         super.onCreate(savedInstanceState)
     }
+
+    protected abstract fun acctchView()
 
     abstract fun createPresenter(): P
 

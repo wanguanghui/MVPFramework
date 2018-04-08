@@ -1,13 +1,14 @@
 package com.wgh.mvpframework.network
 
+import com.wgh.mvpframework.network.api.TestApi
+import com.wgh.mvpframework.network.interceptor.RequestInterceptor
+import com.wgh.mvpframework.network.interceptor.ResponseInterceptor
+import okhttp3.OkHttpClient
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-import okhttp3.OkHttpClient
-import retrofit2.CallAdapter
-import retrofit2.Converter
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
 
 /**
  * @version V0.1.0
@@ -17,28 +18,44 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
  */
 class OkHttpUtils private constructor() {
     private val mOkHttpClient: OkHttpClient = OkHttpClient().newBuilder()
-            .addInterceptor(OkHttpInterceptor())
+            .addInterceptor(RequestInterceptor())
+            .addInterceptor(ResponseInterceptor())
             .connectTimeout(60, TimeUnit.SECONDS)
             .readTimeout(60, TimeUnit.SECONDS)
             .writeTimeout(60, TimeUnit.SECONDS)
             .build()
 
+
+
     companion object {
 
-        private val TAG = "OkHttpUtils"
+        val TAG = "OkHttpUtils"
 
         private var mInstance: OkHttpUtils? = null
-        private val scalarsConverterFactory = ScalarsConverterFactory.create()
         private val gsonConverterFactory = GsonConverterFactory.create()
-        private val rxJavaCallAdapterFactory = RxJavaCallAdapterFactory.create()
+        private val rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create()
+        private var testApi : TestApi ?= null
 
-        val instance: OkHttpUtils
-            @Synchronized get() {
+        public val instance: OkHttpUtils
+            @Synchronized public get() {
                 if (mInstance == null) {
                     mInstance = OkHttpUtils()
                 }
                 return mInstance!!
             }
+    }
+
+    fun getTestApi() : TestApi? {
+        if (testApi == null){
+            var retrofit = Retrofit.Builder()
+                    .client(mOkHttpClient)
+                    .baseUrl(Urls.baseUrl)
+                    .addConverterFactory(gsonConverterFactory)
+                    .addCallAdapterFactory(rxJavaCallAdapterFactory)
+                    .build()
+            testApi = retrofit.create(TestApi::class.java)
+        }
+        return testApi
     }
 
 }

@@ -1,7 +1,6 @@
 package com.wgh.mvpframework.base
 
-import rx.Subscription
-import rx.subscriptions.CompositeSubscription
+import org.reactivestreams.Subscription
 
 /**
  * @author: wgh
@@ -12,7 +11,6 @@ import rx.subscriptions.CompositeSubscription
 open class BasePresenter<V : IBaseView> {
 
     protected var mvpView : V ?= null
-    protected var mCompositeSubscription : CompositeSubscription ?= null
 
     fun attachView(mvpView: V){
         this.mvpView = mvpView
@@ -27,17 +25,12 @@ open class BasePresenter<V : IBaseView> {
      * 取消RxJava订阅关系
      */
     private fun onUnSubscribe(){
-        mCompositeSubscription!!.unsubscribe()
     }
 
     /**
      * 添加RxJava订阅关系
      */
     fun addSubscription(subscription: Subscription){
-        if (mCompositeSubscription == null){
-            mCompositeSubscription = CompositeSubscription()
-        }
-        mCompositeSubscription!!.add(subscription)
 
     }
 }
