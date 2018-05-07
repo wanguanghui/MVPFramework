@@ -13,7 +13,7 @@ abstract class BaseMvpFragment<P : BasePresenter<*>> : BaseFragment() {
 
     var mvpPresenter : P ?= null
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mvpPresenter = createPresenter()
     }

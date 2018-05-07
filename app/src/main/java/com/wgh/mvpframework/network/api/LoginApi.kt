@@ -15,7 +15,7 @@ import retrofit2.http.QueryMap
  * @version V0.1.0
  * @description
  */
-interface TestApi {
+interface LoginApi {
 
     @GET("/v2/movie/top250")
     fun test(@QueryMap options: Map<String, String>) : Observable<DouBanMovieTop250>

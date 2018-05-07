@@ -1,8 +1,8 @@
 package com.wgh.mvpframework.network
 
-import com.wgh.mvpframework.network.api.TestApi
-import com.wgh.mvpframework.network.interceptor.RequestInterceptor
-import com.wgh.mvpframework.network.interceptor.ResponseInterceptor
+import com.wgh.mvpframework.network.api.LoginApi
+import com.wgh.mvpframework.net.interceptor.RequestInterceptor
+import com.wgh.mvpframework.net.interceptor.ResponseInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -34,7 +34,7 @@ class OkHttpUtils private constructor() {
         private var mInstance: OkHttpUtils? = null
         private val gsonConverterFactory = GsonConverterFactory.create()
         private val rxJavaCallAdapterFactory = RxJava2CallAdapterFactory.create()
-        private var testApi : TestApi ?= null
+        private var testApi : LoginApi ?= null
 
         public val instance: OkHttpUtils
             @Synchronized public get() {
@@ -45,7 +45,7 @@ class OkHttpUtils private constructor() {
             }
     }
 
-    fun getTestApi() : TestApi? {
+    fun getTestApi() : LoginApi? {
         if (testApi == null){
             var retrofit = Retrofit.Builder()
                     .client(mOkHttpClient)
@@ -53,7 +53,7 @@ class OkHttpUtils private constructor() {
                     .addConverterFactory(gsonConverterFactory)
                     .addCallAdapterFactory(rxJavaCallAdapterFactory)
                     .build()
-            testApi = retrofit.create(TestApi::class.java)
+            testApi = retrofit.create(LoginApi::class.java)
         }
         return testApi
     }

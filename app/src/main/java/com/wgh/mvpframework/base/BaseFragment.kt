@@ -23,10 +23,10 @@ abstract class BaseFragment : Fragment() {
         return inflater.inflate(getContentViewId(), container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        mContext = activity
+        mContext = this.activity!!
 
         registerListener()
 

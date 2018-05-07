@@ -1,12 +1,14 @@
 package com.wgh.mvpframework
 
-import com.wgh.mvpframework.R.id.password
 import com.wgh.mvpframework.base.BasePresenter
 import com.wgh.mvpframework.bean.DouBanMovieTop250
+import com.wgh.mvpframework.bean.TestBean
+import com.wgh.mvpframework.net.api.TestApi
+import com.wgh.mvpframework.net.core.MyRetrofit
+import com.wgh.mvpframework.network.OkHttpUtil
 import com.wgh.mvpframework.network.OkHttpUtils
-import com.wgh.mvpframework.network.model.DouBanTestModel
-import com.wgh.mvpframework.utils.WccLogger
-import io.reactivex.Observer
+import com.wgh.mvpframework.utils.utils.WccLogger
+import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -28,7 +30,7 @@ class LoginPresenter : BasePresenter<ILoginView>(), ILoginPresenter {
     override fun login2Server(userName: String, password: String) {
         mvpView!!.showProgress(true)
 //        loginModel.login(userName, password)
-        val map : Map<String, String> = mapOf(Pair("username", userName), Pair("password", password))
+        val map : Map<String, String> = mapOf(Pair("username", userName), Pair("pwd", password))
 //        Test.login(userName, password)
         OkHttpUtils.instance
                 .getTestApi()!!
@@ -41,16 +43,16 @@ class LoginPresenter : BasePresenter<ILoginView>(), ILoginPresenter {
                     }
 
                     override fun onNext(s: DouBanMovieTop250) {
-                        WccLogger.d(TAG, s.toString())
+                        com.wgh.mvpframework.utils.utils.WccLogger.d(TAG, s.toString())
                     }
 
                     override fun onError(e: Throwable) {
-                        WccLogger.d(TAG, "onError")
+                        com.wgh.mvpframework.utils.utils.WccLogger.d(TAG, "onError")
                         e.printStackTrace()
                     }
 
                     override fun onComplete() {
-                        WccLogger.d(TAG, "onComplete")
+                        com.wgh.mvpframework.utils.utils.WccLogger.d(TAG, "onComplete")
                         loginSuccess()
                     }
 
@@ -61,34 +63,37 @@ class LoginPresenter : BasePresenter<ILoginView>(), ILoginPresenter {
 
     fun test(index: String) {
         mvpView!!.showProgress(true)
-//        loginModel.login(userName, password)
         val map : Map<String, String> = mapOf(Pair("start", index))
-//        Test.login(userName, password)
-        OkHttpUtils.instance
-                .getTestApi()!!
-                .test(map)
+        MyRetrofit.getClient().create(TestApi::class.java)
+//                .testApi
+                .testGet("aaa", "123456")
+//                .testPost("aaa", "123456")
+//                .testPost(TestModel("aaa", "123456"))
+//        OkHttpUtils.instance
+//                .getTestApi()!!
+//                .test(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(object : Observer<DouBanMovieTop250> {
-                    override fun onSubscribe(d: Disposable) {
+                .doOnSubscribe {  }
+                .doOnError {  }
+                .doFinally {
+                    WccLogger.d(TAG, "onComplete")
+                    loginSuccess() }
+                .subscribe({ WccLogger.d(TAG, it.toString()) },
+                        {
+                            it.printStackTrace()
+                        })
 
-                    }
 
-                    override fun onNext(s: DouBanMovieTop250) {
-                        WccLogger.d(TAG, s.toString())
-                    }
 
-                    override fun onError(e: Throwable) {
-                        WccLogger.d(TAG, "onError")
-                        e.printStackTrace()
-                    }
-
-                    override fun onComplete() {
-                        WccLogger.d(TAG, "onComplete")
-                        loginSuccess()
-                    }
-
-                })
+//        Observable.create(ObservableOnSubscribe { emitter: ObservableEmitter<String> ->
+//            emitter.onNext("hello")
+//            emitter.onNext("world")
+//            emitter.onComplete()
+//        })
+//                .map()
+//                .subscribeOn()
+//                .subscribe()
 
 
     }

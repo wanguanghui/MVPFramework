@@ -1,7 +1,9 @@
 package com.wgh.mvpframework
+import android.content.Context
 import android.view.View
 import android.widget.Toast
 import com.wgh.mvpframework.base.BaseMvpActivity
+import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 
 
@@ -42,7 +44,8 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
     }
 
     override fun showLoginView() {
-        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show()
+        Toasty.success(this,"success", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show()
     }
 
 }
