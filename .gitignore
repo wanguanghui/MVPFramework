@@ -7,3 +7,5 @@
 /build
 /captures
 .externalNativeBuild
+/net/src/androidTest
+/net/src/test
