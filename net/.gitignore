@@ -1,4 +1,3 @@
 /build
-/net/build
-/net/src/androidTest
-/net/src/test
+/src/androidTest
+/src/test
