@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion VERSION_COMPILE_SDK
@@ -11,9 +12,9 @@ android {
         versionCode VERSION_CODE
         versionName VERSION_NAME
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [moduleName : project.getName()]
+        kapt {
+            arguments {
+                arg("moduleName", project.getName())
             }
         }
     }
@@ -26,8 +27,8 @@ android {
     packagingOptions {
         exclude 'META-INF/rxjava.properties'
     }
-    productFlavors{
-        
+    productFlavors {
+
     }
 }
 
@@ -36,6 +37,7 @@ dependencies {
     implementation lib_supportv7
     implementation lib_support_constraint_layout
     implementation lib_support_design
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
@@ -45,7 +47,7 @@ dependencies {
     implementation lib_rxandroid
     implementation lib_glide
     implementation lib_arouter
-    annotationProcessor lib_arouter_compiler
+    kapt lib_arouter_compiler
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
@@ -53,5 +55,7 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.2.8'
     implementation project(':net')
     implementation project(':utils')
-    implementation project(':testmodule1')
+    if (!isModule.toBoolean()) {
+        implementation project(':testmodule1')
+    }
 }

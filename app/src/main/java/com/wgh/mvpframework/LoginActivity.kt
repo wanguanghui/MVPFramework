@@ -1,5 +1,4 @@
 package com.wgh.mvpframework
-import android.content.Context
 import android.view.View
 import android.widget.Toast
 import com.alibaba.android.arouter.facade.annotation.Route
@@ -33,6 +32,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
 //            (mvpPresenter as LoginPresenter).login2Server("", "")
 //            (mvpPresenter as LoginPresenter).test("25")
             ARouter.getInstance().build("/testmodule1/MainActivity").navigation()
+//            ARouter.getInstance().build("/app/testactivity").navigation()
         }
     }
 
