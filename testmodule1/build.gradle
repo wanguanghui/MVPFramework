@@ -1,57 +1,61 @@
-apply plugin: 'com.android.application'
+import kotlin.Experimental
+
+if (isModule.toBoolean()) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion VERSION_COMPILE_SDK
     defaultConfig {
-        applicationId "com.wgh.mvpframework"
         minSdkVersion VERSION_MIN_SDK
         targetSdkVersion VERSION_TARGET_SDK
         versionCode VERSION_CODE
         versionName VERSION_NAME
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [moduleName : project.getName()]
             }
         }
+
     }
+
+    sourceSets {
+        main {
+            if (isModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    packagingOptions {
-        exclude 'META-INF/rxjava.properties'
-    }
-    productFlavors{
-        
-    }
+
+
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation lib_supportv7
     implementation lib_support_constraint_layout
-    implementation lib_support_design
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation "org.jetbrains.anko:anko-common:$anko_version"
-    implementation lib_rxjava2
-    implementation lib_rxandroid
-    implementation lib_glide
     implementation lib_arouter
     annotationProcessor lib_arouter_compiler
-    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
-    implementation 'com.orhanobut:logger:2.1.1'
-    implementation 'com.github.GrenderG:Toasty:1.2.8'
-    implementation project(':net')
-    implementation project(':utils')
-    implementation project(':testmodule1')
 }
+

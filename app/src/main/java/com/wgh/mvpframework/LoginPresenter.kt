@@ -1,5 +1,6 @@
 package com.wgh.mvpframework
 
+import com.wgh.mvpframework.R.id.password
 import com.wgh.mvpframework.base.BasePresenter
 import com.wgh.mvpframework.bean.DouBanMovieTop250
 import com.wgh.mvpframework.bean.TestBean

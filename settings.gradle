@@ -1,1 +1,1 @@
-include ':app', ':net', ':utils'
+include ':app', ':net', ':utils','testmodule1'

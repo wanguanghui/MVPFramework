@@ -2,11 +2,14 @@ package com.wgh.mvpframework
 import android.content.Context
 import android.view.View
 import android.widget.Toast
+import com.alibaba.android.arouter.facade.annotation.Route
+import com.alibaba.android.arouter.launcher.ARouter
 import com.wgh.mvpframework.base.BaseMvpActivity
 import es.dmoral.toasty.Toasty
 import kotlinx.android.synthetic.main.activity_login.*
 
 
+@Route(path = "/app/LoginActivity")
 class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
 
 
@@ -28,7 +31,8 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
     override fun registerListener() {
         email_sign_in_button.setOnClickListener{
 //            (mvpPresenter as LoginPresenter).login2Server("", "")
-            (mvpPresenter as LoginPresenter).test("25")
+//            (mvpPresenter as LoginPresenter).test("25")
+            ARouter.getInstance().build("/testmodule1/MainActivity").navigation()
         }
     }
 

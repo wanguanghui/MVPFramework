@@ -4,6 +4,8 @@ import com.wgh.mvpframework.network.api.TestApi;
 import com.wgh.mvpframework.net.interceptor.RequestInterceptor;
 import com.wgh.mvpframework.net.interceptor.ResponseInterceptor;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
@@ -37,7 +39,7 @@ public class OkHttpUtil {
                 .build();
     }
 
-    public static OkHttpUtil getInstance(){
+    public static OkHttpUtil getInstance(@NotNull String a){
         if (mInstance == null){
             synchronized (OkHttpUtil.class){
                 if (mInstance == null){
