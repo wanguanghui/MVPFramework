@@ -16,16 +16,18 @@ import java.util.concurrent.TimeUnit
  * @version V0.1.0
  * @description
  */
-class MyRetrofit {
+class WccRetrofit {
 
     companion object {
         private var retrofitClient: Retrofit? = null
         private var httpClient: OkHttpClient? = null
 
+        @JvmStatic
         fun initClient(context: Application) {
             retrofitClient = createRetrofit(context)
         }
 
+        @JvmStatic
         fun getClient(): Retrofit {
             if (retrofitClient == null){
                 throw NullPointerException("请现在Application中initClient()")
@@ -34,6 +36,7 @@ class MyRetrofit {
             }
         }
 
+        @JvmStatic
         private fun createRetrofit(context: Application): Retrofit {
             httpClient = OkHttpClient()
                     .newBuilder()

@@ -1,12 +1,9 @@
 package com.wgh.mvpframework
 
-import com.wgh.mvpframework.R.id.password
 import com.wgh.mvpframework.base.BasePresenter
 import com.wgh.mvpframework.bean.DouBanMovieTop250
-import com.wgh.mvpframework.bean.TestBean
 import com.wgh.mvpframework.net.api.TestApi
-import com.wgh.mvpframework.net.core.MyRetrofit
-import com.wgh.mvpframework.network.OkHttpUtil
+import com.wgh.mvpframework.net.core.WccRetrofit
 import com.wgh.mvpframework.network.OkHttpUtils
 import com.wgh.mvpframework.utils.utils.WccLogger
 import io.reactivex.*
@@ -65,7 +62,7 @@ class LoginPresenter : BasePresenter<ILoginView>(), ILoginPresenter {
     fun test(index: String) {
         mvpView!!.showProgress(true)
         val map : Map<String, String> = mapOf(Pair("start", index))
-        MyRetrofit.getClient().create(TestApi::class.java)
+        WccRetrofit.getClient().create(TestApi::class.java)
 //                .testApi
                 .testGet("aaa", "123456")
 //                .testPost("aaa", "123456")

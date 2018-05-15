@@ -58,4 +58,5 @@ dependencies {
     if (!isModule.toBoolean()) {
         implementation project(':testmodule1')
     }
+//    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
 }

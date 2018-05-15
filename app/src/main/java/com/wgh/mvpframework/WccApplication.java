@@ -3,7 +3,7 @@ package com.wgh.mvpframework;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.wgh.mvpframework.net.core.MyRetrofit;
+import com.wgh.mvpframework.net.core.WccRetrofit;
 import com.wgh.mvpframework.utils.WccLogger;
 import com.wgh.mvpframework.utils.constant.CommonConstant;
 
@@ -24,6 +24,6 @@ public class WccApplication extends Application {
             ARouter.openDebug();
         }
         ARouter.init(this);
-        MyRetrofit.Companion.initClient(this);
+        WccRetrofit.Companion.initClient(this);
     }
 }

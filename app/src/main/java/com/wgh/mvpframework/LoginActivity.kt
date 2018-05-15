@@ -42,7 +42,7 @@ class LoginActivity : BaseMvpActivity<LoginPresenter>(), ILoginView {
     override fun showProgress(enable: Boolean) {
         if (enable){
             login_progress.visibility = View.VISIBLE
-        } else{
+        } else {
             login_progress.visibility = View.GONE
         }
     }
