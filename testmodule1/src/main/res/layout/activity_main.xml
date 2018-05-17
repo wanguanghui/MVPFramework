@@ -7,6 +7,7 @@
     tools:context=".Main2Activity">
 
     <TextView
+        android:id="@+id/tv_to_login"
         android:text="module1 activity main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

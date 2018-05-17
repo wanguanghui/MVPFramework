@@ -78,25 +78,25 @@ public class WccLogger {
             if (msg == null) {
                 msg = "log == null!";
             }
-            String[] infos = getAutoJumpLogInfos();
+//            String[] infos = getAutoJumpLogInfos();
             switch (level) {
                 case LEVEL_V:
-                    Log.v(tag, msg + " : " + infos.toString());
+                    Log.v(tag, msg);
                     break;
                 case LEVEL_D:
-                    Log.d(tag, msg + " : " + infos.toString());
+                    Log.d(tag, msg);
                     break;
                 case LEVEL_I:
-                    Log.i(tag, msg + " : " + infos.toString());
+                    Log.i(tag, msg);
                     break;
                 case LEVEL_W:
-                    Log.w(tag, msg + " : " + infos.toString());
+                    Log.w(tag, msg);
                     break;
                 case LEVEL_E:
-                    Log.e(tag, msg + " : " + infos.toString());
+                    Log.e(tag, msg);
                     break;
                 default:
-                    Log.d(tag, msg + " : " + infos.toString());
+                    Log.d(tag, msg);
                     break;
             }
         }

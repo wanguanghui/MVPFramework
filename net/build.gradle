@@ -15,10 +15,10 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
-
-//    kapt {
-//        generateStubs = true
-//    }
+//
+    kapt {
+        generateStubs = true
+    }
 //
 //    androidExtensions {
 //        experimental = true

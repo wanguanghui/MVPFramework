@@ -30,6 +30,7 @@ android {
     productFlavors {
 
     }
+    buildToolsVersion '27.0.3'
 }
 
 dependencies {
@@ -55,8 +56,9 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.2.8'
     implementation project(':net')
     implementation project(':utils')
+    implementation project(':m_public')
     if (!isModule.toBoolean()) {
         implementation project(':testmodule1')
     }
-//    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
+    //    debugImplementation 'com.facebook.stetho:stetho:1.5.0'
 }

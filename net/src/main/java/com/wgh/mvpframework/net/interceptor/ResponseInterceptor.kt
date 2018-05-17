@@ -23,7 +23,7 @@ class ResponseInterceptor : Interceptor{
         val responseBody = response.peekBody(1024*1024)
 
         WccLogger.d(TAG, "requestUrl: " + response.request().url())
-//        WccLogger.json(TAG, responseBody.string())
+        WccLogger.d(TAG, responseBody.string())
 
         return response
 

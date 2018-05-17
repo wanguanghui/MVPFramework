@@ -1,5 +1,3 @@
-import kotlin.Experimental
-
 if (isModule.toBoolean()) {
     apply plugin: 'com.android.application'
 } else {
@@ -48,8 +46,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation lib_supportv7
     implementation lib_support_constraint_layout
     testImplementation 'junit:junit:4.12'
@@ -58,5 +55,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation lib_arouter
     kapt lib_arouter_compiler
+    implementation project(':utils')
 }
 

@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">TestModule1</string>
+    <string name="action_sign_in">登录</string>
+    <string name="str_account">账号</string>
+    <string name="str_password">密码</string>
+</resources>

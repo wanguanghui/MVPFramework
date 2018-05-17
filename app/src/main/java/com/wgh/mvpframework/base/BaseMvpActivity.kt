@@ -1,6 +1,8 @@
 package com.wgh.mvpframework.base
 
+import android.os.Build
 import android.os.Bundle
+import com.wgh.mvpframework.R
 
 /**
  * @author: wgh
@@ -15,6 +17,9 @@ abstract class BaseMvpActivity<P : BasePresenter<*>> : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         mvpPresenter = createPresenter()
         acctchView()
+//        if (Build.VERSION.SDK_INT >= 21){
+//            window.statusBarColor = resources.getColor(R.color.colorAccent)
+//        }
         super.onCreate(savedInstanceState)
     }
 

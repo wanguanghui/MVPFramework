@@ -18,7 +18,7 @@ import retrofit2.http.Query;
  * @date: 2018/4/10
  * @description
  */
-public interface TestApi {
+public interface LoginApi {
 
     @GET("get")
     Observable<TestBean> testGet();

@@ -14,10 +14,6 @@ class RetryWithDelay constructor(private val maxRetryCount: Int = MAX_RETRY_COUN
 
     private var retryCount: Int = 0
 
-    init {
-        this.retryCount = 0
-    }
-
     override fun apply(attempts: Observable<out Throwable>): Observable<*> {
         return attempts
                 .flatMap { throwable ->
