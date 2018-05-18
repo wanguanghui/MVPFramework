@@ -1,8 +1,8 @@
 package com.wgh.mvpframework.network;
 
+import com.wgh.mvpframework.common.net.interceptor.RequestInterceptor;
+import com.wgh.mvpframework.common.net.interceptor.ResponseInterceptor;
 import com.wgh.mvpframework.network.api.TestApi;
-import com.wgh.mvpframework.net.interceptor.RequestInterceptor;
-import com.wgh.mvpframework.net.interceptor.ResponseInterceptor;
 
 import org.jetbrains.annotations.NotNull;
 

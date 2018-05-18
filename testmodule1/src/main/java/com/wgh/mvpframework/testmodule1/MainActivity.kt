@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
-import com.wgh.mvpframework.utils.arouter.RouterUtils
+import com.wgh.mvpframework.common.arouter.RouterUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
 @Route(path = RouterUtils.ROUTER_TEST_MAIN)

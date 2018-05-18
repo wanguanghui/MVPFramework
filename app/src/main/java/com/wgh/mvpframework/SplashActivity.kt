@@ -5,8 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.wgh.mvpframework.mpublic.base.BaseActivity
-import com.wgh.mvpframework.utils.WccLogger
-import com.wgh.mvpframework.utils.arouter.RouterUtils
+import com.wgh.mvpframework.common.WccLogger
+import com.wgh.mvpframework.common.arouter.RouterUtils
 import es.dmoral.toasty.Toasty
 
 class SplashActivity : BaseActivity() {

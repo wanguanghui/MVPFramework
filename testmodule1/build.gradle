@@ -55,6 +55,6 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation lib_arouter
     kapt lib_arouter_compiler
-    implementation project(':utils')
+    implementation project(':common')
 }
 

@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.wgh.mvpframework.common.net.model.LoginModel
+import com.wgh.mvpframework.common.net.model.TestBean
 import com.wgh.mvpframework.mpublic.R
 import com.wgh.mvpframework.mpublic.base.BaseFragment
-import com.wgh.mvpframework.net.model.LoginModel
-import com.wgh.mvpframework.net.model.TestBean
-import com.wgh.mvpframework.utils.utils.WccLogger
+import com.wgh.mvpframework.common.utils.WccLogger
 import kotlinx.android.synthetic.main.fragment_account_login.*
 
 /**

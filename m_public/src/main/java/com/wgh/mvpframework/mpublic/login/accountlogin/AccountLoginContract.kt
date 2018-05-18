@@ -1,9 +1,9 @@
 package com.wgh.mvpframework.mpublic.login.accountlogin
 
+import com.wgh.mvpframework.common.net.model.LoginModel
+import com.wgh.mvpframework.common.net.model.TestBean
 import com.wgh.mvpframework.mpublic.base.BasePresenter
 import com.wgh.mvpframework.mpublic.base.BaseView
-import com.wgh.mvpframework.net.model.LoginModel
-import com.wgh.mvpframework.net.model.TestBean
 
 /**
  * Create by wgh on 2018/5/16.

@@ -1,11 +1,11 @@
 package com.wgh.mvpframework.mpublic.login.accountlogin
 
+import com.wgh.mvpframework.common.net.api.LoginApi
+import com.wgh.mvpframework.common.net.core.WccRetrofit
+import com.wgh.mvpframework.common.net.model.LoginModel
+import com.wgh.mvpframework.common.net.model.TestBean
+import com.wgh.mvpframework.common.net.rx.RxUtil
 import com.wgh.mvpframework.mpublic.base.DefaultPresenterImpl
-import com.wgh.mvpframework.net.api.LoginApi
-import com.wgh.mvpframework.net.core.WccRetrofit
-import com.wgh.mvpframework.net.model.LoginModel
-import com.wgh.mvpframework.net.model.TestBean
-import com.wgh.mvpframework.net.rx.RxUtil
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 

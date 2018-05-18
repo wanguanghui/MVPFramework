@@ -3,7 +3,7 @@ package com.wgh.mvpframework.mpublic.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 
-import com.wgh.mvpframework.utils.LoadingDialog
+import com.wgh.mvpframework.common.dialog.LoadingDialog
 
 /**
  * Create by wgh on 2018/5/16.

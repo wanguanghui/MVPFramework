@@ -3,9 +3,9 @@ package com.wgh.mvpframework;
 import android.app.Application;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.wgh.mvpframework.net.core.WccRetrofit;
-import com.wgh.mvpframework.utils.WccLogger;
-import com.wgh.mvpframework.utils.constant.CommonConstant;
+import com.wgh.mvpframework.common.WccLogger;
+import com.wgh.mvpframework.common.constant.CommonConstant;
+import com.wgh.mvpframework.common.net.core.WccRetrofit;
 
 /**
  * @version V0.1.0

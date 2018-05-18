@@ -1,7 +1,7 @@
-package com.wgh.mvpframework.network.api;
+package com.wgh.mvpframework.common.net.api;
 
 import com.wgh.mvpframework.common.net.model.TestBean;
-import com.wgh.mvpframework.network.model.TestModel;
+import com.wgh.mvpframework.common.net.model.TestModel;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
@@ -18,7 +18,7 @@ import retrofit2.http.Query;
  * @date: 2018/4/10
  * @description
  */
-public interface TestApi {
+public interface LoginApi {
 
     @GET("get")
     Observable<TestBean> testGet();
@@ -31,7 +31,7 @@ public interface TestApi {
 
     @FormUrlEncoded
     @POST("post")
-    Observable<TestBean> testPost(@Field("username")String username, @Field("pwd")String pwd);
+    Observable<TestBean> testPost(@Field("username") String username, @Field("pwd") String pwd);
 
     @POST("post")
     Observable<TestBean> testPost(@Body TestModel body);

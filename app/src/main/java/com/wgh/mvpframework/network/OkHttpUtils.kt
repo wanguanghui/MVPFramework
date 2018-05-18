@@ -1,8 +1,8 @@
 package com.wgh.mvpframework.network
 
+import com.wgh.mvpframework.common.net.interceptor.RequestInterceptor
+import com.wgh.mvpframework.common.net.interceptor.ResponseInterceptor
 import com.wgh.mvpframework.network.api.LoginApi
-import com.wgh.mvpframework.net.interceptor.RequestInterceptor
-import com.wgh.mvpframework.net.interceptor.ResponseInterceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

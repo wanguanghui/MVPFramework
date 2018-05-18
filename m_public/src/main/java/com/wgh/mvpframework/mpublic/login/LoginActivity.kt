@@ -5,7 +5,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.wgh.mvpframework.mpublic.R
 import com.wgh.mvpframework.mpublic.base.BaseActivity
 import com.wgh.mvpframework.mpublic.login.accountlogin.AccountLoginFragment
-import com.wgh.mvpframework.utils.arouter.RouterUtils
+import com.wgh.mvpframework.common.arouter.RouterUtils
 
 
 @Route(path = RouterUtils.ROUTER_PUBLIC_LOGIN)

@@ -54,8 +54,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation 'com.orhanobut:logger:2.1.1'
     implementation 'com.github.GrenderG:Toasty:1.2.8'
-    implementation project(':net')
-    implementation project(':utils')
+    implementation project(':common')
     implementation project(':m_public')
     if (!isModule.toBoolean()) {
         implementation project(':testmodule1')
