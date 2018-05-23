@@ -15,22 +15,31 @@ android {
         versionName VERSION_NAME
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+        kapt {
+            arguments {
+                arg("moduleName", project.getName())
+            }
+        }
     }
 
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-
-    implementation lib_supportv7
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api lib_supportv7
+    api lib_support_recyclerview
+    //    api l
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation lib_rxjava2
-    implementation lib_rxandroid
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    api lib_rxjava2
+    api lib_rxandroid
+    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    api "com.squareup.retrofit2:retrofit:$retrofit_version"
+    api "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    api "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation lib_glide
+    api lib_arouter
+    kapt lib_arouter_compiler
 }

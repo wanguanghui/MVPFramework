@@ -6,11 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <TextView
-        android:id="@+id/tv_to_login"
-        android:text="module1 activity main"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:background="#2200ffff">-->
+
+        <!--<com.wgh.mvpframework.testmodule1.TestLinearLayout2-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="80dp"-->
+            <!--android:layout_alignParentBottom="true" />-->
+
+    <!--</RelativeLayout>-->
+
+
+
 
 </RelativeLayout>

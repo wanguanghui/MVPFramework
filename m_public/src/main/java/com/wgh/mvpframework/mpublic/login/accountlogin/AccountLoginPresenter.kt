@@ -5,7 +5,7 @@ import com.wgh.mvpframework.common.net.core.WccRetrofit
 import com.wgh.mvpframework.common.net.model.LoginModel
 import com.wgh.mvpframework.common.net.model.TestBean
 import com.wgh.mvpframework.common.net.rx.RxUtil
-import com.wgh.mvpframework.mpublic.base.DefaultPresenterImpl
+import com.wgh.mvpframework.common.base.DefaultPresenterImpl
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 

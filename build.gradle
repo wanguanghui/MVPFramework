@@ -46,6 +46,7 @@ ext {
     //V7包及组件
     lib_supportv7 = "com.android.support:appcompat-v7:27.1.1"
     lib_support_design = "com.android.support:design:27.1.1"
+    lib_support_recyclerview = "com.android.support:recyclerview-v7:27.1.1"
     lib_support_constraint_layout = "com.android.support.constraint:constraint-layout:1.0.2"
 
     //rxjava

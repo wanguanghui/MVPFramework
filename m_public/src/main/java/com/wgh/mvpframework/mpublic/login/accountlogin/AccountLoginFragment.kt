@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.wgh.mvpframework.common.net.model.LoginModel
 import com.wgh.mvpframework.common.net.model.TestBean
 import com.wgh.mvpframework.mpublic.R
-import com.wgh.mvpframework.mpublic.base.BaseFragment
+import com.wgh.mvpframework.common.base.BaseFragment
 import com.wgh.mvpframework.common.utils.WccLogger
 import kotlinx.android.synthetic.main.fragment_account_login.*
 

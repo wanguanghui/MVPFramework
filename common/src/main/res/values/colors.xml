@@ -3,4 +3,9 @@
 
     <color name="grey_999">#999999</color>
 
+    <color name="grey_565656">#565656</color>
+
+    <color name="red_ff89a1">#ff89a1</color>
+    <color name="red_ff0000">#ff0000</color>
+
 </resources>

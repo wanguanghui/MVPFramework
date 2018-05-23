@@ -47,14 +47,11 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation lib_supportv7
     implementation lib_support_constraint_layout
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation lib_arouter
-    kapt lib_arouter_compiler
     implementation project(':common')
+    kapt lib_arouter_compiler
 }
 

@@ -6,7 +6,25 @@ package com.wgh.mvpframework.common.arouter
  */
 object RouterUtils {
 
-    const val ROUTER_PUBLIC_LOGIN = "/mpublic/LoginActivity"
-    const val ROUTER_TEST_MAIN = "/testmodule1/MainActivity"
+    interface ModuleApp {
+        companion object {
+
+        }
+    }
+
+    interface ModulePublic {
+        companion object {
+            /***
+             * 登录页
+             */
+            const val ROUTER_PUBLIC_LOGIN = "/mpublic/LoginActivity"
+        }
+    }
+
+    interface ModuleTest {
+        companion object {
+            const val ROUTER_TEST_MAIN = "/testmodule1/MainActivity"
+        }
+    }
 
 }
