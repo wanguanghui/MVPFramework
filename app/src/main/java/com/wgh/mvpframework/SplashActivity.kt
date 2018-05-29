@@ -25,16 +25,19 @@ class SplashActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        WccLogger.d(TAG, "$requestCode ... ${data!!.extras.getString("loginResult")}" )
-        when (requestCode) {
-            SplashActivity.REQUEST_CODE_LOGIN ->
-                when(data.getStringExtra("loginResult")) {
-                    "Success" ->{
-                        Toasty.success(this@SplashActivity, "登录成功", Toast.LENGTH_SHORT).show()
-                        ARouter.getInstance().build(RouterUtils.ModuleTest.ROUTER_TEST_MAIN).navigation(this@SplashActivity)
-                    }
+        if (data != null){
+            WccLogger.d(TAG, "$requestCode ... ${data!!.extras.getString("loginResult")}" )
+            when (requestCode) {
+                SplashActivity.REQUEST_CODE_LOGIN ->
+                    when(data!!.getStringExtra("loginResult")) {
+                        "Success" ->{
+                            Toasty.success(this@SplashActivity, "登录成功", Toast.LENGTH_SHORT).show()
+                            ARouter.getInstance().build(RouterUtils.ModuleTest.ROUTER_TEST_MAIN).navigation(this@SplashActivity)
+                        }
 
-                }
+                    }
+            }
         }
+
     }
 }

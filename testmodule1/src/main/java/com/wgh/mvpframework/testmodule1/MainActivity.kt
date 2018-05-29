@@ -1,22 +1,21 @@
 package com.wgh.mvpframework.testmodule1
 
-import android.graphics.Canvas
-import android.graphics.Paint
-import android.graphics.Rect
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.wgh.mvpframework.common.adapter.CategoryItemDecoration
+import com.wgh.mvpframework.common.recyclerview.decoration.CategoryItemDecoration
+import com.wgh.mvpframework.common.recyclerview.adapter.CommonListAdapter
+import com.wgh.mvpframework.common.recyclerview.adapter.MultiTypeSupport
 import com.wgh.mvpframework.common.arouter.RouterUtils
 import com.wgh.mvpframework.common.net.bean.RvBean
+import com.wgh.mvpframework.common.recyclerview.adapter.WrapRecyclerAdapter
 import com.wgh.mvpframework.common.utils.WccGlide
+import com.wgh.mvpframework.common.utils.WccToast
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.item_rv_test.view.*
 
@@ -36,40 +35,34 @@ class MainActivity : AppCompatActivity() {
         for (i in 1 ..50){
             list.add(RvBean("测试文本 -- ${i}", "http://www.biaobaiju.com/uploads/20180111/02/1515607460-UShmBCfKWP.jpg"))
         }
-        rv.adapter = CategoryListAdapter(list)
-        val dividerItemDecoration: DividerItemDecoration = DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL)
-        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.shape_item_divider))
-//        rv.addItemDecoration(dividerItemDecoration)
-        rv.addItemDecoration(CategoryItemDecoration(resources.getDrawable(R.drawable.shape_item_divider)))
-//        rv.addItemDecoration(DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL))
-
-
-    }
-
-    class CategoryListAdapter(val list: List<RvBean>) : RecyclerView.Adapter<CategoryListAdapter.ViewHolder>() {
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rv_test, parent, false)
-            return ViewHolder(view)
-        }
-
-        override fun getItemCount(): Int = list.size
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            holder.bindData(list[position], position)
-        }
-
-
-        class ViewHolder constructor(var view: View) : RecyclerView.ViewHolder(view) {
-
-            fun bindData(rvBean: RvBean, position: Int){
-                with(rvBean){
-                    itemView.tvTest.text = text
-                    WccGlide.loadImage(itemView.context, imgUrl, itemView.ivTest)
-                }
+        val multiTypeSupport = object: MultiTypeSupport<RvBean> {
+            override fun getLayoutId(item: RvBean, position: Int): Int {
+                return if(position % 2 == 0) R.layout.item_rv_test else R.layout.item_rv_test_h
             }
-
         }
+        val adapter = object: CommonListAdapter<RvBean>(list, multiTypeSupport){
+            override fun bindData(holder: RecyclerView.ViewHolder, item: RvBean, position: Int) {
+                with(item){
+                    holder.itemView.tvTest.text = text
+                    WccGlide.loadImage(holder.itemView.context, imgUrl, holder.itemView.ivTest)
+                }
+                holder.itemView.setOnClickListener { WccToast.toastShort(this@MainActivity, "$position") }
+            }
+        }
+//        adapter.setItemClickListener(object : CommonListAdapter.OnItemClickListener{
+//            override fun onItemClick(position: Int) {
+//                WccToast.toastShort(this@MainActivity, "$position")
+//            }
+//
+//        })
+
+        val headerFooterAdapter = WrapRecyclerAdapter(adapter)
+//        rv.adapter = headerFooterAdapter
+        rv.adapter = adapter
+        val dividerItemDecoration = DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL)
+        dividerItemDecoration.setDrawable(resources.getDrawable(R.drawable.shape_item_divider))
+        rv.addItemDecoration(CategoryItemDecoration(resources.getDrawable(R.drawable.shape_item_divider)))
+        rv.addHeaderView(View.inflate(this@MainActivity, R.layout.view_header, null))
     }
 
 }
